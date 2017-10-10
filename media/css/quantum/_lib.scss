@@ -1,0 +1,20 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import '../pebbles/includes/lib';
+
+
+$color-quantum-blue: #0a84ff;
+
+@mixin tail-gradient-heading() {
+    @include font-size-level3;
+    background: #0060df;
+    background: url('/media/img/firefox/quantum/fox-tail-fresh-from-our-blog.png') bottom -300px center no-repeat,
+                linear-gradient(148deg, #0080ff 7%, #00edff 100%);
+    color: #fff;
+    display: block;
+    margin: 40px 0;
+    max-width: none;
+    text-align: center;
+}

@@ -2,14 +2,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-@import '../../../pebbles/includes/animations';
-@import '../../../pebbles/includes/lib';
+@import '../pebbles/includes/animations';
+@import '../pebbles/includes/lib';
 
 #newsletter-subscribe {
     background: #fff;
     border-top: 1px solid #d7d7db;
     color: #000;
-    display: none;
     padding: 40px 0;
 
     .newsletter-title {
@@ -126,6 +125,7 @@
     }
 
     @media #{$mq-tablet} {
+        display: grid;
         grid-template-columns: 2fr 300px;
         grid-gap: 40px;
         padding: 40px;
