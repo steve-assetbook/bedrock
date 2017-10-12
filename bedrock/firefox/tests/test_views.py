@@ -943,3 +943,34 @@ class TestFeaturesPages(TestCase):
         req.locale = 'en-US'
         views.sync_page(req)
         render_mock.assert_called_once_with(req, 'firefox/features/quantum/sync.html')
+
+
+@patch('bedrock.firefox.views.l10n_utils.render')
+class TestFirefoxHubPage(TestCase):
+    @patch('bedrock.firefox.views.switch', Mock(return_value=False))
+    def test_hub_pre_57(self, render_mock):
+        view = views.FirefoxHubView.as_view()
+        req = RequestFactory().get('/firefox/')
+        req.locale = 'en-US'
+        view(req)
+        template = render_mock.call_args[0][1]
+        eq_(template, ['firefox/hub/home.html'])
+
+    @patch('bedrock.firefox.views.switch', Mock(return_value=True))
+    def test_hub_post_57(self, render_mock):
+        view = views.FirefoxHubView.as_view()
+        req = RequestFactory().get('/firefox/')
+        req.locale = 'en-US'
+        view(req)
+        template = render_mock.call_args[0][1]
+        eq_(template, ['firefox/hub/home-quantum.html'])
+
+    @patch('bedrock.firefox.views.switch', Mock(return_value=True))
+    @patch.object(views, 'lang_file_is_active', lambda *x: False)
+    def test_hub_not_translated(self, render_mock):
+        view = views.FirefoxHubView.as_view()
+        req = RequestFactory().get('/firefox/')
+        req.locale = 'de'
+        view(req)
+        template = render_mock.call_args[0][1]
+        eq_(template, ['firefox/hub/home.html'])
