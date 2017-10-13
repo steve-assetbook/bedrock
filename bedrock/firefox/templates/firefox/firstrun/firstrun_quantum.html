@@ -1,0 +1,78 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% add_lang_files "firefox/new/quantum" %}
+
+{% extends "firefox/firstrun/base.html" %}
+
+{% block body_id %}firstrun-quantum-onboarding{% endblock %}
+
+{% block page_title %}
+  {{ _('Welcome to Firefox') }}
+{% endblock %}
+
+{% block site_css %}
+  {% stylesheet 'firefox_firstrun_quantum' %}
+{% endblock %}
+
+{% block experiments %}
+  {% if switch('experiment-firstrun-membership', ['en-US']) %}
+    {% javascript 'experiment-firstrun-membership' %}
+  {% endif %}
+{% endblock %}
+
+{% block js %}
+  {% javascript 'firefox_firstrun_quantum' %}
+{% endblock %}
+
+{% block global_nav %}{% endblock %}
+{% block site_header %}{% endblock %}
+
+{% block content %}
+  <div id="scene">
+    <img id="background" alt="" src="{{ static('img/firefox/firstrun-57/blue_bg.png') }}">
+    <img id="top-bg" alt="" src="{{ static('img/firefox/firstrun-57/top_bg.png') }}">
+    <img id="mid-bg" alt="" src="{{ static('img/firefox/firstrun-57/mid_bg.png') }}">
+    <img id="low-bg" alt="" src="{{ static('img/firefox/firstrun-57/low_bg.png') }}">
+    <div id=firefox-logo></div>
+    <div id=browser-wrapper>
+      <img id="browser" alt="" src="{{ static('img/firefox/firstrun-57/browser.png') }}">
+      <img id="search" alt="" src="{{ static('img/firefox/firstrun-57/search.png') }}">
+      <img id="buttons" alt="" src="{{ static('img/firefox/firstrun-57/buttons.png') }}">
+      <img id="k" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/k.png') }}">
+      <img id="star" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/star.png') }}">
+      <img id="trello" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/trello.png') }}">
+      <img id="tower" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/tower.png') }}">
+      <img id="pintrest" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/pintrest.png') }}">
+      <img id="stackoverflow" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/stackoverflow.png') }}">
+      <img id="wikipedia" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/wikipedia.png') }}">
+      <img id="amazon" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/amazon.png') }}">
+      <img id="mozilla" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/mozilla.png') }}">
+      <img id="a" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/a.png') }}">
+      <img id="github" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/github.png') }}">
+      <img id="times" class="icon" alt="" src="{{ static('img/firefox/firstrun-57/times.png') }}">
+      <img id="news1" class="news" alt="" src="{{ static('img/firefox/firstrun-57/news1.png') }}">
+      <img id="news2" class="news" alt="" src="{{ static('img/firefox/firstrun-57/news2.png') }}">
+      <img id="news3" class="news" alt="" src="{{ static('img/firefox/firstrun-57/news3.png') }}">
+    </div>
+    <img id="white-wave" alt="" src="{{ static('img/firefox/firstrun-57/white_wave.png') }}">
+    
+    <div class="fxaccounts-container">
+    {% block page_content %}
+      <div id="left-divider">
+        <h1 id="title">{{_('Already using Firefox?')}}</h1>
+        <p>{{_('Sign in to your account and we’ll sync the bookmarks, passwords and other great things you’ve saved to Firefox on other devices.')}}</p>
+        <a href="{{ url('firefox.features.sync') }}">{{_('Learn more about Firefox Accounts')}}</a>
+      </div>
+      <div class="fxaccounts" id="fxa-iframe-config" data-host="{{ settings.FXA_IFRAME_SRC }}" data-mozillaonline-host="{{ settings.FXA_IFRAME_SRC_MOZILLAONLINE }}">
+        <iframe id="fxa" scrolling="no" data-src="{{ settings.FXA_IFRAME_SRC }}signin?utm_campaign=fxa-embedded-form&amp;utm_medium=referral&amp;utm_source={{ utm_source }}&amp;utm_content=fx-{{ version }}&amp;entrypoint=firstrun&amp;service=sync&amp;context=iframe&amp;style=chromeless&amp;haltAfterSignIn=true"></iframe>
+      </div>
+      <button id="skip-button">{{_('Skip this step')}}</button>
+    {% endblock %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block site_footer %}{% endblock %}
+{% block email_form %}{% endblock %}

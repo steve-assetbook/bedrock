@@ -1,0 +1,405 @@
+@import "../../sandstone/lib.less";
+
+@font-face {
+    font-family: 'Fira Sans Light';
+    src: url('/media/fonts/FiraSans-Light.woff2') format('woff2'),
+         url('/media/fonts/FiraSans-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Sans Light';
+    src: url('/media/fonts/FiraSans-SemiBold.woff2') format('woff2'),
+         url('/media/fonts/FiraSans-SemiBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+:root {
+    --animation-curve: ease-in;
+}
+
+body {
+    margin: 0;
+}
+
+* {
+    font-family: 'Fira Sans Light';
+}
+
+#browser-wrapper {
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    display: block;
+    overflow: auto;
+    width: 100%;
+}
+
+ img {
+    bottom: 0;
+    height: auto;
+    left: 0;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+
+#firefox-logo {
+    background: url('/media/img/firefox/firstrun-quantum/firefox_and_wordmark.png');
+    width: 150px;
+    height: 60px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+#white-wave {
+    bottom: 10%;
+    height: 110%;
+    left: -50%;
+    width: 150%;
+}
+
+#fxa {
+    border: none;
+    position: relative;
+    width: 400px;
+}
+
+#fxa-iframe-config {
+    background: #fff;
+    display: inline-block;
+    margin-left: 65px;
+    padding: 20px 6px;
+    opacity: 0;
+}
+
+.fxaccounts-container {
+    bottom: 0;
+    color: #fff;
+    height: 395px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 847px;
+    z-index: 10;
+}
+
+#left-divider {
+    opacity: 0;
+    float: left;
+    height: 60%;
+    margin-top: 179px;
+    margin-right: 70px;
+    width: 300px;
+
+    p {
+        font-size: 1.1em;
+        line-height: 150%;
+        margin: 70px 0 20px;
+    }
+
+    a {
+        color: #fff;
+        display: block;
+        font-size: .9em;
+        margin-top: 10px;
+    }
+
+    #title {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin: 20px 0;
+    }
+}
+
+#skip-button {
+    -moz-appearance: none;
+    background-color: #FFF;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 0 0 0 transparent;
+    color: #0996f8;
+    cursor: pointer;
+    display: block;
+    padding: 8px 21px;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-right: 130px;
+    float: right;
+    opacity: 0;
+
+    &:not([disabled]):hover {
+        background-color: #e6f4fe;
+        color: #0669ad;
+    }
+}
+
+#skip-button[disabled] {
+    cursor: default;
+    opacity: .5;
+}
+
+.skipbutton-hidden {
+    display: none;
+}
+
+ #scene[data-animate=true] {
+    #low-bg,
+    #mid-bg,
+    #top-bg {
+        transition: transform 1s .2s;
+        transform: scale(1.3);
+    }
+
+    #browser-wrapper {
+        transition: transform 1s .5s var(--animation-curve), opacity 1s .5s var(--animation-curve);
+        transform: scale(2.2);
+        opacity: 0;
+    }
+
+    #search {
+        transition: transform 1s .2s;
+        transform: rotateX(90deg);
+        transform-origin: center 30%;
+    }
+
+    .icon {
+        transform: scale(0);
+        transition: transform 1s;
+    }
+
+    #k {
+        transition-delay: .2s;
+        // Identifying the location the image needs to shink to horizontally. Use the original image
+        // ratio and multiply by the current viewport height to find the virtual image's width.
+        // subtract the available width, to get the difference, then divide by two to get the missing
+        // portion on the left side. Use the amount of pixels from the original image, and get the relative
+        // amount on the resized image.
+        transform-origin: ~'calc(798/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 40%;
+    }
+
+    #wikipedia {
+        transition-delay: .4s;
+        transform-origin: ~'calc(798/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 49%;
+    }
+
+    #amazon {
+        transition-delay: .5s;
+        transform-origin: ~'calc(901/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 49%;
+    }
+
+    #star {
+        transition-delay: .6s;
+        transform-origin: ~'calc(901/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 40%;
+    }
+
+    #trello {
+        transition-delay: .7s;
+        transform-origin: ~'calc(996/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 40%;
+    }
+
+    #mozilla {
+        transition-delay: .8s;
+        transform-origin: ~'calc(996/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 49%;
+    }
+
+    #a {
+        transition-delay: .6s;
+        transform-origin: ~'calc(1097/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 49%;
+    }
+
+    #tower {
+        transition-delay: .7s;
+        transform-origin: ~'calc(1097/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 40%;
+    }
+
+    #pintrest {
+        transition-delay: .7s;
+        transform-origin: ~'calc(1194/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 40%;
+    }
+
+    #github {
+        transition-delay: .6s;
+        transform-origin: ~'calc(1194/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 49%;
+    }
+
+    #times {
+        transition-delay: .8s;
+        transform-origin: ~'calc(1297/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 49%;
+    }
+
+    #stackoverflow {
+        transition-delay: .7s;
+        transform-origin: ~'calc(1297/1180 * 100vh - (2100/1180 * 100vh - 100vw)/2)' 40%;
+    }
+
+    @media (min-aspect-ratio: 2100/1180) {
+        #k {
+            // When the aspect ratio of the screen is greater (width/height) than the original image
+            // we only need to convert the pixels to the correct size, and shift in that far from the left
+            transform-origin: ~'calc(798/2100 * 100vw)' 40%;
+        }
+
+        #wikipedia {
+            transform-origin: ~'calc(798/2100 * 100vw)' 49%;
+        }
+
+        #amazon {
+            transform-origin: ~'calc(901/2100 * 100vw)' 49%;
+        }
+
+        #star {
+            transform-origin: ~'calc(901/2100 * 100vw)' 40%;
+        }
+
+        #trello {
+            transform-origin: ~'calc(996/2100 * 100vw)' 40%;
+        }
+
+        #mozilla {
+            transform-origin: ~'calc(996/2100 * 100vw)' 49%;
+        }
+
+        #a {
+            transform-origin: ~'calc(1097/2100 * 100vw)' 49%;
+        }
+
+        #tower {
+            transform-origin: ~'calc(1097/2100 * 100vw)' 40%;
+        }
+
+        #pintrest {
+            transform-origin: ~'calc(1194/2100 * 100vw)' 40%;
+        }
+
+        #github {
+            transform-origin: ~'calc(1194/2100 * 100vw)' 49%;
+        }
+
+        #times {
+            transform-origin: ~'calc(1297/2100 * 100vw)' 49%;
+        }
+
+        #stackoverflow {
+            transform-origin: ~'calc(1297/2100 * 100vw)' 40%;
+        }
+    }
+
+    .news {
+        opacity: 0;
+    }
+
+    #news1 {
+        transition: opacity 1s .2s;
+    }
+
+    #news2 {
+        transition: opacity 1s .6s;
+    }
+
+    #news3 {
+        transition: opacity 1s 1s;
+    }
+
+    #white-wave {
+        transition: transform 1s .5s var(--animation-curve);
+        transform: translate(20%, 30%) scale(1.2);
+    }
+
+    #fxa-iframe-config {
+        transition: opacity 2s 2.5s;
+        opacity: 1;
+    }
+
+    #left-divider {
+        transition: opacity 2s 2.5s, transform 1s 2.5s;
+        transform: translateY(-100px);
+        opacity: 1;
+
+        p {
+            transition: transform 1s 2.7s;
+            transform: translateY(-60px);
+        }
+
+        a {
+            transition:transform 1s 2.9s;
+            transform: translateY(-60px);
+        }
+    }
+
+    #skip-button {
+        transition: opacity 1s 2.5s;
+        opacity: 1;
+    }
+}
+
+#scene[data-sign-in=true] {
+    #firefox-logo {
+        transition: transform 1.5s 1s, opacity 1.5s 1s;
+        transform: translateY(-400px);
+        opacity: 0;
+    }
+
+    #left-divider {
+        transition: opacity 1.5s 1s;
+        opacity: 0;
+
+        #title {
+            transition: transform 1.5s 1s;
+            transform: translateY(-400px);
+        }
+
+        p {
+            transition: transform 1.5s 1.2s;
+            transform: translateY(-400px);
+        }
+
+        a {
+            transition: transform 1.5s 1.4s;
+            transform: translateY(-400px);
+        }
+    }
+
+    #skip-button,
+    #fxa-iframe-config {
+        transition: opacity 2s 1s, transform 2s 1s;
+        opacity: 0;
+        transform: translateY(-300px);
+    }
+
+    #background {
+        transition: opacity 2s 2s;
+        opacity: 0;
+    }
+
+    #low-bg {
+        transition: transform 2s 1s, opacity 1s 1.5s;
+        opacity: 0;
+        transform: translateY(-200px) scale(1.3);
+    }
+
+    #mid-bg {
+        transition: transform 2s 1s, opacity 1s 1.5s;
+        opacity: 0;
+        transform: translateY(-150px) scale(1.3);
+    }
+
+    #top-bg {
+        transition: transform 2s 1s, opacity 1s 1.5s;
+        opacity: 0;
+        transform: translateY(-100px) scale(1.3);
+    }
+}
