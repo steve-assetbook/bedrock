@@ -1250,13 +1250,6 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/firefox-features-hub-bundle.js',
     },
-    'firefox-features-landing': {
-        'source_filenames': (
-            'js/base/mozilla-lazy-load.js',
-            'js/firefox/features/landing.js',
-        ),
-        'output_filename': 'js/firefox-features-landing-bundle.js',
-    },
     # This bundle is currently used on both /features/sync & /features/send-tabs
     # because they happen to share everything. If/when divergence happens,
     # send-tabs should get it's own .js files.

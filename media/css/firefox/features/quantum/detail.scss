@@ -6,6 +6,7 @@
 @import '../../../hubs/news-feed';
 @import '../../../hubs/cards-block';
 @import '../../../quantum/lib';
+@import '../../../quantum/key-features';
 
 
 .main-header h1:before {
@@ -191,7 +192,15 @@
 .news {
     // show the full-width title and hide the other one
     .section-title-full-width {
-        @include tail-gradient-heading();
+        @include font-size-level3;
+        background: #0060df;
+        background: url('/media/img/firefox/quantum/fox-tail-fresh-from-our-blog.png') bottom -300px center no-repeat,
+                    linear-gradient(148deg, #0080ff 7%, #00edff 100%);
+        color: #fff;
+        display: block;
+        margin: 40px 0;
+        max-width: none;
+        text-align: center;
     }
 
     .content .section-title {
@@ -252,6 +261,8 @@
                 width: calc(100% + 30px);
             }
 
+            &:active,
+            &:focus,
             &:hover {
                 &:before {
                     transform: translateX(11px);
@@ -283,5 +294,23 @@
     .entry-title {
         @include font-size-level4;
         font-weight: bold;
+        line-height: 1.3;
+    }
+}
+
+html[dir='rtl'] {
+    .news-feed .entry .cta-link {
+        padding-left: 30px;
+        padding-right: 0;
+
+        &:before {
+            background: url('/media/img/firefox/quantum/left-arrow-blue.svg');
+            left: 0;
+            right: auto;
+        }
+
+        &:hover:before {
+            transform: translateX(-11px);
+        }
     }
 }

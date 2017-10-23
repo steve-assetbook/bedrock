@@ -106,11 +106,11 @@
 </section>
 
 <section class="fx-product-benefits-section">
-  <h2 class="content">
+  <div class="benefits-heading content">
   {% if l10n_has_tag('firefox-features-57-update') %}
-    {{ _('Firefox Product Benefits') }}
+    <h2>{{ _('Firefox Product Benefits') }}</h2>
   {% endif %}
-  </h2>
+  </div>
 
   <div class="content">
     <ul class="fx-product-benefits-list">
@@ -165,8 +165,3 @@
 {% endblock %}
 
 {% block news %}{% endblock %}
-
-{% block js %}
-  {{ super() }}
-  {% javascript 'firefox-features-landing' %}
-{% endblock %}

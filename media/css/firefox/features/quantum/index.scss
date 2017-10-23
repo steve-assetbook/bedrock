@@ -121,6 +121,8 @@
         text-align: center;
         transition: box-shadow 0.2s ease, transform 0.2s ease;
 
+        &:active,
+        &:focus,
         &:hover {
             border-radius: 2px;
             box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
@@ -245,9 +247,21 @@
     }
 }
 
-.fx-product-benefits-section h2 {
-    @include tail-gradient-heading();
-    margin-top: 0;
+.fx-product-benefits-section .benefits-heading {
+    background: #0060df;
+    background: url('/media/img/firefox/quantum/fox-tail-fresh-from-our-blog.png') bottom -300px center no-repeat,
+                linear-gradient(148deg, #0080ff 7%, #00edff 100%);
+    color: #fff;
+    display: block;
+    margin: 40px 0;
+    max-width: none;
+    min-height: 50px;
+
+    h2 {
+        @include font-size-level3;
+        margin: 0;
+        text-align: center;
+    }
 }
 
 .fx-product-benefits-list {
