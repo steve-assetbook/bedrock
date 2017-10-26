@@ -51,6 +51,10 @@ body {
         line-height: 1.8;
     }
 
+    @media #{$mq-tablet} {
+        padding: 60px 0;
+    }
+
     @media #{$mq-desktop} {
         padding: 80px 0;
     }
@@ -62,16 +66,21 @@ body {
 .main-header-section {
 
     h1 {
-        @include at2x('/media/img/logos/firefox/logo-quantum-full-wordmark.png', 280px, 59px);
-        @include image-replaced();
-        height: 59px;
+        @include at2x('/media/img/logos/firefox/logo-quantum.png', 120px, 120px);
+        @include font-size-level2;
+        background-position: top center;
+        background-repeat: no-repeat;
         margin: 0 auto 10px;
-        width: 280px;
+        padding-top: 140px;
     }
 
     h2 {
         @include font-size-level3;
         margin-top: 20px;
+    }
+
+    h3 {
+        @include font-size-level3;
     }
 
     .download-button {
@@ -83,24 +92,17 @@ body {
     }
 
     @media #{$mq-tablet} {
-        h1 {
-            @include background-size(425px 90px);
-            height: 90px;
-            width: 425px;
-        }
-    }
-
-    @media #{$mq-desktop} {
         min-height: 550px;
         text-align: left;
 
         h1 {
+            background-position: left center;
             margin: 0 0 10px;
+            padding: 40px 0 40px 140px;
         }
 
         .header-content {
             float: left;
-            padding: 60px 0;
             width: 50%;
         }
 
@@ -123,18 +125,24 @@ body {
     @media #{$mq-desktop-wide} {
 
         .header-content {
-            width: 40%;
+            padding: 40px 0;
+            width: 45%;
         }
 
         .header-image {
-            width: 60%;
+            width: 55%;
         }
     }
 }
 
 html[dir="rtl"] .main-header-section {
 
-    @media #{$mq-desktop} {
+    @media #{$mq-tablet} {
+
+        h1 {
+            background-position: right center;
+            padding: 40px 140px 40px 0;
+        }
 
         .header-content {
             float: right;

@@ -21,12 +21,9 @@
   <header class="page-section main-header-section">
     <div class="content">
       <div class="header-content">
-        <h1>{{ _('Firefox Quantum') }}</h1>
-        {% if LANG.startswith('en') %}
-          <h2>Fast for good.</h2>
-        {% else %}
-          <h2>{{ _('New. Fast. For good.') }}</h2>
-        {% endif %}
+        <h1>{{ _('The New Firefox') }}</h1>
+        <h2>{{ _('Meet Firefox Quantum.') }}</h2>
+        <h3>{{ _('Fast for good.') }}</h3>
 
         {{ download_firefox(dom_id='download-intro', alt_copy=_('Download now'), button_color='quantum', locale_in_transition=True, download_location='primary cta') }}
       </div>
@@ -368,8 +365,8 @@
 
   <section class="page-section secondary-download-section">
     <div class="content">
-      <h2>{{ _('Firefox Quantum') }}</h2>
-      <p>{{ _('New. Fast. For good.') }}</p>
+      <h2>{{ _('The New Firefox') }}</h2>
+      <p>{{ _('Fast for good.') }}</p>
       {{ download_firefox(dom_id='footer-download', alt_copy=_('Download now'), button_color='quantum', locale_in_transition=True, download_location='other') }}
     </div>
   </section>
