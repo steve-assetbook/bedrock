@@ -1,0 +1,2 @@
+web: ./bin/run-prod.sh
+clock: ./bin/run-clock.sh

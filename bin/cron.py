@@ -71,56 +71,50 @@ def ping_dms(function):
     return _ping
 
 
-def schedule_database_jobs():
-    @scheduled_job('interval', minutes=15)
-    @ping_dms
-    def update_product_details():
-        call_command('update_product_details_files --database bedrock')
-
-    @scheduled_job('interval', minutes=30)
-    def update_externalfiles():
-        call_command('update_externalfiles')
-
-    @scheduled_job('interval', minutes=30)
-    def update_security_advisories():
-        call_command('update_security_advisories')
-
-    @scheduled_job('interval', hours=6)
-    def update_tweets():
-        call_command('cron update_tweets')
-
-    @scheduled_job('interval', hours=1)
-    def ical_feeds():
-        call_command('cron update_ical_feeds')
-        call_command('cron cleanup_ical_events')
-
-    @scheduled_job('interval', hours=1)
-    def update_blog_feeds():
-        call_command('update_wordpress --database bedrock')
-
-    @scheduled_job('interval', minutes=5)
-    def update_release_notes():
-        call_command('update_release_notes --quiet')
+@scheduled_job('interval', minutes=15)
+@ping_dms
+def update_product_details():
+    call_command('update_product_details_files')
 
 
-def schedul_l10n_jobs():
-    @scheduled_job('interval', minutes=10)
-    def update_locales():
-        call_command('l10n_update')
+@scheduled_job('interval', minutes=30)
+def update_externalfiles():
+    call_command('update_externalfiles')
+
+
+@scheduled_job('interval', minutes=30)
+def update_security_advisories():
+    call_command('update_security_advisories')
+
+
+@scheduled_job('interval', hours=6)
+def update_tweets():
+    call_command('cron update_tweets')
+
+
+@scheduled_job('interval', hours=1)
+def ical_feeds():
+    call_command('cron update_ical_feeds')
+    call_command('cron cleanup_ical_events')
+
+
+@scheduled_job('interval', hours=1)
+def update_blog_feeds():
+    call_command('update_wordpress')
+
+
+@scheduled_job('interval', minutes=5)
+def update_release_notes():
+    call_command('update_release_notes --quiet')
+
+
+@scheduled_job('interval', minutes=10)
+def update_locales():
+    call_command('l10n_update')
 
 
 if __name__ == '__main__':
-    args = sys.argv[1:]
-    has_jobs = False
-    if 'db' in args:
-        schedule_database_jobs()
-        has_jobs = True
-    if 'l10n' in args:
-        schedul_l10n_jobs()
-        has_jobs = True
-
-    if has_jobs:
-        try:
-            schedule.start()
-        except (KeyboardInterrupt, SystemExit):
-            pass
+    try:
+        schedule.start()
+    except (KeyboardInterrupt, SystemExit):
+        pass

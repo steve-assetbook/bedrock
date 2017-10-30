@@ -1,9 +1,3 @@
 #!/bin/bash -xe
-
-RUN_SUPERVISOR=$(echo "$RUN_SUPERVISOR" | tr '[:upper:]' '[:lower:]')
-
-if [[ "$RUN_SUPERVISOR" == "true" ]]; then
-  exec bin/run-supervisor.sh
-else
-  exec bin/run-prod.sh
-fi
+export PORT="${PORT:-8000}"
+exec honcho start -f docker/Procfile
