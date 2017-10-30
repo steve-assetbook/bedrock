@@ -532,7 +532,9 @@ html[dir="rtl"] .key-features-section {
             z-index: 1;
 
             &:before {
-                background-color: #0080ff;
+                background: #0080ff url('/media/img/firefox/hub/quantum/icon-sprite.svg') center 0 no-repeat;
+                background: url('/media/img/firefox/hub/quantum/icon-sprite.svg') center 0 no-repeat,
+                            linear-gradient(to bottom, #0080ff 0%, #00feff 100%) top left;
                 border-radius: 100%;
                 content: '';
                 height: 100px;
@@ -545,27 +547,23 @@ html[dir="rtl"] .key-features-section {
             }
 
             &.bookmarks:before {
-                background: #0080ff url('/media/img/firefox/hub/quantum/icon-bookmarks.svg') center center no-repeat;
-                background: url('/media/img/firefox/hub/quantum/icon-bookmarks.svg') center center no-repeat,
-                            linear-gradient(to bottom, #0080ff 0%, #00feff 100%);
+                background-position: center top -137px;
+                background-position: center top -137px, top left;
             }
 
             &.auto-fill:before {
-                background: #0080ff url('/media/img/firefox/hub/quantum/icon-auto-fill.svg') center center no-repeat;
-                background: url('/media/img/firefox/hub/quantum/icon-auto-fill.svg') center center no-repeat,
-                            linear-gradient(to bottom, #0080ff 0%, #00feff 100%);
+                background-position: center top 20px;
+                background-position: center top 20px, top left;
             }
 
             &.passwords:before {
-                background: #0080ff url('/media/img/firefox/hub/quantum/icon-passwords.svg') center center no-repeat;
-                background: url('/media/img/firefox/hub/quantum/icon-passwords.svg') center center no-repeat,
-                            linear-gradient(to bottom, #0080ff 0%, #00feff 100%);
+                background-position: center top -580px;
+                background-position: center top -580px, top left;
             }
 
             &.history:before {
-                background: #0080ff url('/media/img/firefox/hub/quantum/icon-history.svg') center center no-repeat;
-                background: url('/media/img/firefox/hub/quantum/icon-history.svg') center center no-repeat,
-                            linear-gradient(to bottom, #0080ff 0%, #00feff 100%);
+                background-position: center top -431px;
+                background-position: center top -431px, top left;
             }
         }
     }
@@ -591,6 +589,26 @@ html[dir="rtl"] .key-features-section {
                     height: 125px;
                     margin-left: -62.5px;
                     width: 125px;
+                }
+
+                &.bookmarks:before {
+                    background-position: center top -125px;
+                    background-position: center top -125px, top left;
+                }
+
+                &.auto-fill:before {
+                    background-position: center top 32px;
+                    background-position: center top 32px, top left;
+                }
+
+                &.passwords:before {
+                    background-position: center top -568px;
+                    background-position: center top -568px, top left;
+                }
+
+                &.history:before {
+                    background-position: center top -419px;
+                    background-position: center top -419px, top left;
                 }
             }
         }
@@ -706,23 +724,35 @@ html[dir="rtl"] .data-import-section {
     }
 
     ul li {
-        background-position: top center;
-        background-repeat: no-repeat;
         border-bottom: 1px solid #fff;
         margin: 0 auto 40px;
         max-width: 30em;
-        padding: 60px 0 20px;
+        padding: 0 0 20px;
 
-        &.private-browsing {
-            background-image: url('/media/img/firefox/hub/quantum/icon-private-browsing.svg');
+        h3 {
+            background: url('/media/img/firefox/hub/quantum/icon-sprite.svg') no-repeat;
         }
 
-        &.tracking-protection {
-            background-image: url('/media/img/firefox/hub/quantum/icon-tracking-protection.svg');
+        &.private-browsing h3 {
+            background-position: center top -752px;
+            min-height: 19px;
+            padding-top: 40px;
         }
 
-        &.faster-loading {
-            background-image: url('/media/img/firefox/hub/quantum/icon-rocket.svg');
+        &.tracking-protection h3 {
+            background-position: center top -1300px;
+            min-height: 32px;
+            padding-top: 50px;
+        }
+
+        &.faster-loading h3 {
+            background-position: center top -871px;
+            min-height: 42px;
+            padding-top: 60px;
+        }
+
+        &:last-child {
+            border-bottom: none;
         }
 
         p {
@@ -764,10 +794,28 @@ html[dir="rtl"] .data-import-section {
             width: 45%;
 
             li {
-                background-position: top left;
                 margin: 0 0 40px;
                 max-width: none;
                 padding: 0 0 20px 60px;
+
+                h3 {
+                    margin-left: -60px;
+                }
+
+                &.private-browsing h3 {
+                    background-position: left -20px top -752px;
+                    padding: 0 0 0 60px;
+                }
+
+                &.tracking-protection h3 {
+                    background-position: left -20px top -1300px;
+                    padding: 0 0 0 60px;
+                }
+
+                &.faster-loading h3 {
+                    background-position: left -20px top -871px;
+                    padding: 0 0 0 60px;
+                }
 
                 p {
                     margin: 0  0 1.25em;
@@ -806,8 +854,27 @@ html[dir="rtl"] .privacy-section {
             float: right;
 
             li {
-                background-position: top right;
                 padding: 0 60px 20px 0;
+
+                h3 {
+                    margin-left: 0;
+                    margin-right: -60px;
+                }
+
+                &.private-browsing h3 {
+                    background-position: right -20px top -752px;
+                    padding: 0 60px 0;
+                }
+
+                &.tracking-protection h3 {
+                    background-position: right -20px top -1300px;
+                    padding: 0 60px 0;
+                }
+
+                &.faster-loading h3 {
+                    background-position: right -20px top -871px;
+                    padding: 0 60px 0;
+                }
             }
         }
 
@@ -871,7 +938,9 @@ html[dir="rtl"] .privacy-section {
         position: relative;
 
         &:before {
-            background-color: #ffe900;
+            background: #ffe900 url('/media/img/firefox/hub/quantum/icon-sprite.svg') center 0 no-repeat;
+            background: url('/media/img/firefox/hub/quantum/icon-sprite.svg') center 0 no-repeat,
+                        linear-gradient(to bottom, #ffe900 0%, #ff9400 100%) top left;
             border-radius: 100%;
             content: '';
             height: 100px;
@@ -883,21 +952,18 @@ html[dir="rtl"] .privacy-section {
         }
 
         &.extensions:before {
-            background: #ffe900 url('/media/img/firefox/hub/quantum/icon-extensions.svg') center center no-repeat;
-            background: url('/media/img/firefox/hub/quantum/icon-extensions.svg') center center no-repeat,
-                        linear-gradient(to bottom, #ffe900 0%, #ff9400 100%);
+            background-position: center top -284px;
+            background-position: center top -284px, top left;
         }
 
         &.themes:before {
-            background: #ffe900 url('/media/img/firefox/hub/quantum/icon-themes.svg') center center no-repeat;
-            background: url('/media/img/firefox/hub/quantum/icon-themes.svg') center center no-repeat,
-                        linear-gradient(to bottom, #ffe900 0%, #ff9400 100%);
+            background-position: center top -984px;
+            background-position: center top -984px, top left;
         }
 
         &.toolbar:before {
-            background: #ffe900 url('/media/img/firefox/hub/quantum/icon-toolbar.svg') center center no-repeat;
-            background: url('/media/img/firefox/hub/quantum/icon-toolbar.svg') center center no-repeat,
-                        linear-gradient(to bottom, #ffe900 0%, #ff9400 100%);
+            background-position: center top -1128px;
+            background-position: center top -1128px, top left;
         }
     }
 
