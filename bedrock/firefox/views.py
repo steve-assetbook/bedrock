@@ -743,6 +743,15 @@ class FirefoxProductDesktopView(BlogPostsView):
     blog_tags = ['browser', 'featured']
     template_name = 'firefox/products/desktop.html'
 
+    def render_to_response(self, context, **response_kwargs):
+        if switch('firefox-57-release'):
+            return HttpResponsePermanentRedirect(reverse('firefox'))
+        else:
+            return l10n_utils.render(self.request,
+                                     self.get_template_names(),
+                                     context,
+                                     **response_kwargs)
+
 
 class FirefoxProductAndroidView(BlogPostsView):
     blog_posts_limit = 3

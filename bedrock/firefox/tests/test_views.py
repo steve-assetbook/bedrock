@@ -974,3 +974,20 @@ class TestFirefoxHubPage(TestCase):
         view(req)
         template = render_mock.call_args[0][1]
         eq_(template, ['firefox/hub/home.html'])
+
+
+class TestFirefoxDesktopPageRedirect(TestCase):
+    @patch('bedrock.firefox.views.switch', Mock(return_value=False))
+    def test_desktop_pre_57(self):
+        view = views.FirefoxProductDesktopView.as_view()
+        req = RequestFactory().get('/en-US/firefox/desktop/')
+        resp = view(req)
+        eq_(resp.status_code, 200)
+
+    @patch('bedrock.firefox.views.switch', Mock(return_value=True))
+    def test_desktop_post_57(self):
+        view = views.FirefoxProductDesktopView.as_view()
+        req = RequestFactory().get('/en-US/firefox/desktop/')
+        resp = view(req)
+        eq_(resp.status_code, 301)
+        ok_(resp.url.endswith('/en-US/firefox/'))
